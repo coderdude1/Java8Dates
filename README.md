@@ -1,4 +1,20 @@
-## Default spring boot/jackson 
+# Experiments with Java8 dates
+## Overview
+Several experiments using java 8 time objects.  Focus intially is on serialization with jackson
+and persistence using mongo (springdata and non-spring data).  Eventually I'll add some of the
+nice joda-time utility methods and classes
+
+## General Notes
+This is a springboot class, using intellij you can just import from existing sources and should be
+able to run the main springboot application class.
+
+## Stuff todo still
+1. add some real unit tests experiment with config options
+2. add swagger, more endpoints to get, put, and post data
+3. Can I configure jackson with annotations and enums?  I've seen some stuff
+
+## Jackson Serializatoin
+### Default spring boot/jackson 
 This one is a partial clip of the output, as the ZonedDateTime has hundreds of fields that get serialized
 
     localDate: {
@@ -59,7 +75,7 @@ This one is a partial clip of the output, as the ZonedDateTime has hundreds of f
         }
     },
 
-## Adding the Jackson JSR310 support lib to the classpath, no configuration
+### Adding the Jackson JSR310 support lib to the classpath, no configuration, ie default output
 
     {
         localDate: [
@@ -79,8 +95,8 @@ This one is a partial clip of the output, as the ZonedDateTime has hundreds of f
         zonedDateTime: 1471399229.094
     }
 
-##Using the JacksonConfig to control the jackson engine.
-### Using the WRITE_DATES_AS_TIMESTAMPS
+###Using the JacksonConfig along with the JSR310 lib to control the jackson engine.
+#### Using the WRITE_DATES_AS_TIMESTAMPS
 
 Value set to false
 
@@ -114,7 +130,7 @@ Value set to true
         zonedDateTime: 1471398814.639
     }
     
-###Using the WRITE_DATE_TIMESTAMPS_AS_NANOSECONDS.  
+####Using the WRITE_DATE_TIMESTAMPS_AS_NANOSECONDS.  
 note this is the same output as if we did not use the JacksonCOnfig, but juust
 added the Jackson support for JSR310 lib to the classpath
 
