@@ -20,7 +20,13 @@ three major ones are:
 2. Mutability
 3. 
 
-## Jackson Serializatoin
+## Jackson Serialization
+### Swagger
+There is a controller that implements swagger, go to http://localhost:8080 and it will redirect to the
+swagger endpoint, allowing you to perform various operations.  You can play around with the swagger
+as documented below, restart the container (unless I find a way to progamattically change these
+configs)
+
 ### Default spring boot/jackson 
 This one is a partial clip of the output, as the ZonedDateTime has hundreds of fields that get serialized
 
