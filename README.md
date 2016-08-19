@@ -9,9 +9,12 @@ This is a springboot class, using intellij you can just import from existing sou
 able to run the main springboot application class.
 
 ## Stuff todo still
-1. add some real unit tests experiment with config options
-2. add swagger, more endpoints to get, put, and post data
+1. add some real unit tests for controllers, services, and maybe some tests to exercise date functions.
+2. experiment with variouus config options
+2. more endpoints to get, put, and post data
+3. various maniuplations of dates using the new jodatime style stuff
 3. Can I configure jackson with annotations and enums?  I've seen some stuff
+4. Probably break up this README file
 
 ## New java8 date types
 You can look up the details behind Oracle releasing new date types for java elsewhere, but
