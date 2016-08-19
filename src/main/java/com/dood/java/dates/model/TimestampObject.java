@@ -1,5 +1,7 @@
 package com.dood.java.dates.model;
 
+import com.google.common.base.MoreObjects;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
@@ -37,5 +39,14 @@ public class TimestampObject {
     public TimestampObject setZonedDateTime(ZonedDateTime zonedDateTime) {
         this.zonedDateTime = zonedDateTime;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("localDate", localDate)
+                .add("localDateTime", localDateTime)
+                .add("zonedDateTime", zonedDateTime)
+                .toString();
     }
 }

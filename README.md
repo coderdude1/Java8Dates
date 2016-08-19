@@ -13,6 +13,13 @@ able to run the main springboot application class.
 2. add swagger, more endpoints to get, put, and post data
 3. Can I configure jackson with annotations and enums?  I've seen some stuff
 
+## New java8 date types
+You can look up the details behind Oracle releasing new date types for java elsewhere, but
+three major ones are:
+1. Thread Safety
+2. Mutability
+3. 
+
 ## Jackson Serializatoin
 ### Default spring boot/jackson 
 This one is a partial clip of the output, as the ZonedDateTime has hundreds of fields that get serialized
