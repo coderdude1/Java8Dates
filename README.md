@@ -15,6 +15,7 @@ able to run the main springboot application class.
 3. various maniuplations of dates using the new jodatime style stuff
 3. Can I configure jackson with annotations and enums?  I've seen some stuff
 4. Probably break up this README file
+2. Add embedded mongo for integration tests, maybe unit tests to verify timezone and GMT query behavior
 
 ## New java8 date types
 You can look up the details behind Oracle releasing new date types for java elsewhere, but
@@ -52,6 +53,22 @@ Another interesting observation is that the localDate and LocalDateTIme objects 
 timestamps was created on that date, and we were GMT-5, thus 9:12:24 local time which is correct).  The
 localDate apparently stored the time as midnight (matches the spring data mongo docs for this type).
 
+### Dates vs LocalDateTimes and Mongo
+It looks like all the entries are stored in mongo as zulu IsoDate.  here is a document that contained a LocalDate, LocalDateTime
+and a java.util.Date object
+
+    {
+            "_id" : ObjectId("57b685a0d985b71e6457d94a"),
+            "_class" : "com.dood.java.dates.model.AuditEntry",
+            "localDate" : ISODate("2016-08-18T05:00:00Z"),
+            "localDateTime" : ISODate("2016-08-19T04:05:52.867Z"),
+            "date" : ISODate("2016-08-19T04:05:52.867Z"),
+            "auditEntry" : "count: 5"
+    }
+
+Will need to think on the implications of this when generating say audit events (we want the zulu time so probably can just
+use LocalDateTime) and since they are persisted as zulu time.  Client side queries may need to supply timezone data which we
+would convert to GMT (to get events around the clients timezone).  depends upon the use case.  Document and dicuss with team
 
 ## Jackson Serialization
 ### Swagger

@@ -10,11 +10,11 @@ import java.time.ZonedDateTime;
 
 /**
  * Basic pojo to experiment with db persistence and json serialization to clients
+ *
+ * SPringData Mongo does not currently support the ZonedDateTime for CRUD (it let me persist it (see README.md) but not
+ * do a findAll).
  */
 public class TimestampObject {
-    @Id
-    private String id;
-
     private LocalDate localDate;
     private LocalDateTime localDateTime;
     private ZonedDateTime zonedDateTime;
@@ -49,7 +49,6 @@ public class TimestampObject {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("id", id)
                 .add("localDate", localDate)
                 .add("localDateTime", localDateTime)
                 .add("zonedDateTime", zonedDateTime)
