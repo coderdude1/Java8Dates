@@ -31,10 +31,14 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-data-mongodb')
     compile('org.springframework.boot:spring-boot-starter-web')
 
+    //Swagger
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.5.0'
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.5.0'
+
     /*
     without this jackson will serialize the whole date object into json
      */
-//    compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+    compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
 
     //Test stuff
     testCompile('org.springframework.boot:spring-boot-starter-test')

@@ -1,11 +1,18 @@
 package com.dood.java.dates.model;
 
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Objects;
+import org.springframework.data.annotation.Id;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 
 /**
  * Basic pojo to experiment with db persistence and json serialization to clients
+ *
+ * SPringData Mongo does not currently support the ZonedDateTime for CRUD (it let me persist it (see README.md) but not
+ * do a findAll).
  */
 public class TimestampObject {
     private LocalDate localDate;
@@ -37,5 +44,14 @@ public class TimestampObject {
     public TimestampObject setZonedDateTime(ZonedDateTime zonedDateTime) {
         this.zonedDateTime = zonedDateTime;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("localDate", localDate)
+                .add("localDateTime", localDateTime)
+                .add("zonedDateTime", zonedDateTime)
+                .toString();
     }
 }
