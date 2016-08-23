@@ -35,6 +35,12 @@ public class AuditEntryService {
         LOG.info("created: {}", auditEntry);
     }
 
+    public AuditEntry create(LocalDate localDate, LocalDateTime localDateTime, Date date, String auditEntry) {
+        AuditEntry auditEntryObj = createAuditEntry(localDate, localDateTime, date, auditEntry);
+        create(auditEntryObj);
+        return auditEntryObj;
+    }
+
     public AuditEntry get(String id) {
         return auditEntryRepository.findOne(id);
     }
@@ -56,11 +62,15 @@ public class AuditEntryService {
     }
 
     private AuditEntry createRandomAuditEntry(String auditEntry) {
-        return new AuditEntry()
-                .setDate(new Date())
-                .setLocalDate(LocalDate.now())
-                .setLocalDateTime(LocalDateTime.now())
-                .setAuditEntry(auditEntry);
+        LocalDateTime now = LocalDateTime.now();
+        return createAuditEntry(LocalDate.now(), now, new Date(), "This is an audit string for " + now);
     }
 
+    private AuditEntry createAuditEntry(LocalDate localDate, LocalDateTime localDateTime, Date date, String auditEntry) {
+        return new AuditEntry()
+                .setDate(date)
+                .setLocalDate(localDate)
+                .setLocalDateTime(localDateTime)
+                .setAuditEntry(auditEntry);
+    }
 }

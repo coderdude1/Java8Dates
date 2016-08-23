@@ -15,6 +15,7 @@ import java.util.Date;
  * Add some biz methods on here too to do stuff with fancy date manip
  */
 public class AuditEntry {
+
     @Id
     private String id;
 
