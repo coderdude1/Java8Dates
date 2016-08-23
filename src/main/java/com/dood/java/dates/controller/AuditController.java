@@ -2,13 +2,11 @@ package com.dood.java.dates.controller;
 
 import com.dood.java.dates.model.AuditEntry;
 import com.dood.java.dates.service.AuditEntryService;
+import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -38,6 +36,13 @@ public class AuditController {
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     public List<AuditEntry> findAll() {
         return auditEntryService.findAll();
+    }
+
+
+    @RequestMapping(value="/createNew", method = RequestMethod.POST)
+    public AuditEntry createNew(@RequestBody @ApiParam(value = "auditEntry.id", hidden = true) AuditEntry auditEntry) {
+        auditEntryService.create(auditEntry);
+        return auditEntry;
     }
 }
 

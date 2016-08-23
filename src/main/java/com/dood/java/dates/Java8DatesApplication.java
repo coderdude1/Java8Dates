@@ -11,6 +11,9 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @EnableSwagger2
 @SpringBootApplication
 public class Java8DatesApplication {
@@ -25,7 +28,9 @@ public class Java8DatesApplication {
                 .apiInfo(apiInfo())
                 .select()
                 .paths(Predicates.not(PathSelectors.regex("/error")))//exclude spring error controllers// for now
-                .build();
+                .build()
+                    .directModelSubstitute(LocalDate.class, java.sql.Date.class) //from springfox docs
+                    .directModelSubstitute(LocalDateTime.class, java.util.Date.class);
     }
 
     private ApiInfo apiInfo() {
