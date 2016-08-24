@@ -8,10 +8,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.security.SecureRandom;
+import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class AuditEntryService {
@@ -35,8 +39,8 @@ public class AuditEntryService {
         LOG.info("created: {}", auditEntry);
     }
 
-    public AuditEntry create(LocalDate localDate, LocalDateTime localDateTime, Date date, String auditEntry) {
-        AuditEntry auditEntryObj = createAuditEntry(localDate, localDateTime, date, auditEntry);
+    public AuditEntry create(LocalDate localDate, LocalDateTime localDateTime, Date date, String auditEntry, Instant instant) {
+        AuditEntry auditEntryObj = createAuditEntry(localDate, localDateTime, date, auditEntry, instant);
         create(auditEntryObj);
         return auditEntryObj;
     }
@@ -63,14 +67,18 @@ public class AuditEntryService {
 
     private AuditEntry createRandomAuditEntry(String auditEntry) {
         LocalDateTime now = LocalDateTime.now();
-        return createAuditEntry(LocalDate.now(), now, new Date(), "This is an audit string for " + now);
+        Random random = new SecureRandom();
+        return createAuditEntry(LocalDate.now(), now, new Date(), "This is an audit string for " + now,
+            Instant.now());
     }
 
-    private AuditEntry createAuditEntry(LocalDate localDate, LocalDateTime localDateTime, Date date, String auditEntry) {
+    private AuditEntry createAuditEntry(LocalDate localDate, LocalDateTime localDateTime, Date date, String auditEntry,
+                                        Instant instant) {
         return new AuditEntry()
                 .setDate(date)
                 .setLocalDate(localDate)
                 .setLocalDateTime(localDateTime)
-                .setAuditEntry(auditEntry);
+                .setAuditEntry(auditEntry)
+                .setInstant(instant);
     }
 }

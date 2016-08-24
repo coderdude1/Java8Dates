@@ -44,5 +44,9 @@ public class AuditController {
         auditEntryService.create(auditEntry);
         return auditEntry;
     }
+    @RequestMapping(value="/deleteAll", method = RequestMethod.DELETE)
+    public void deleteAll() {
+        auditEntryService.deleteAll();
+    }
 }
 

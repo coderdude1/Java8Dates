@@ -3,8 +3,7 @@ package com.dood.java.dates.model;
 import com.google.common.base.MoreObjects;
 import org.springframework.data.annotation.Id;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.*;
 import java.util.Date;
 
 /**
@@ -23,6 +22,8 @@ public class AuditEntry {
     private LocalDateTime localDateTime;
     private Date date;
     private String auditEntry;
+    private Instant instant;
+//    private Duration duration;//not supported by springdata mongo
 
     public String getId() {
         return id;
@@ -69,6 +70,15 @@ public class AuditEntry {
         return this;
     }
 
+    public Instant getInstant() {
+        return instant;
+    }
+
+    public AuditEntry setInstant(Instant instant) {
+        this.instant = instant;
+        return this;
+    }
+
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
@@ -77,6 +87,7 @@ public class AuditEntry {
                 .add("localDateTime", localDateTime)
                 .add("date", date)
                 .add("auditEntry", auditEntry)
+                .add("instant", instant)
                 .toString();
     }
 }
