@@ -2,7 +2,7 @@
 ## Overview
 Several experiments using java 8 time objects.  Focus intially is on serialization with jackson
 and persistence using mongo (springdata and non-spring data).  Eventually I'll add some of the
-nice joda-time utility methods and classes
+nice joda-time utility methods and classes and exercise them with tests
 
 ## General Notes
 This is a springboot class, using intellij you can just import from existing sources and should be
@@ -52,6 +52,11 @@ Document in mongo:
 Another interesting observation is that the localDate and LocalDateTIme objects is stored at zulu time (the above
 timestamps was created on that date, and we were GMT-5, thus 9:12:24 local time which is correct).  The
 localDate apparently stored the time as midnight (matches the spring data mongo docs for this type).
+
+Types that are supported currently using springdata mongo are
+    localDate
+    localDateTime
+    Instant
 
 ### Dates vs LocalDateTimes and Mongo
 It looks like all the entries are stored in mongo as zulu IsoDate.  here is a document that contained a LocalDate, LocalDateTime
