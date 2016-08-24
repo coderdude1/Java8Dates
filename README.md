@@ -6,7 +6,8 @@ nice joda-time utility methods and classes and exercise them with tests
 
 ## General Notes
 This is a springboot class, using intellij you can just import from existing sources and should be
-able to run the main springboot application class.
+able to run the main springboot application class.  You can shoot a browser at http://localhost:8080
+and see a swagger interface to all current controllers, and there methods
 
 ## Stuff todo still
 1. add some real unit tests for controllers, services, and maybe some tests to exercise date functions.

@@ -17,7 +17,8 @@ import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.List;
 
-@Api(description = "Provides various java 8 date operations")
+@Api(description = "Provides various java 8 date operations - DO NOT USE, Will be rewritten to showcase" +
+        "java 8 date stuff not related to persistence")
 @RestController
 public class DateController {
     private static final Logger LOG = LoggerFactory.getLogger(DateController.class);

@@ -11,7 +11,7 @@ import java.util.Date;
  * with CRUD.
  *
  * TODO add other java8 concepts like Instant, Duration, And Period.  Not sure if they can be persisted.
- * Add some biz methods on here too to do stuff with fancy date manip
+ * Add some biz methods on here too to do stuff with fancy javaUtilDate manip
  */
 public class AuditEntry {
 
@@ -20,7 +20,7 @@ public class AuditEntry {
 
     private LocalDate localDate;
     private LocalDateTime localDateTime;
-    private Date date;
+    private Date javaUtilDate;
     private String auditEntry;
     private Instant instant;
 //    private Duration duration;//not supported by springdata mongo
@@ -52,12 +52,12 @@ public class AuditEntry {
         return this;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getJavaUtilDate() {
+        return javaUtilDate;
     }
 
-    public AuditEntry setDate(Date date) {
-        this.date = date;
+    public AuditEntry setJavaUtilDate(Date javaUtilDate) {
+        this.javaUtilDate = javaUtilDate;
         return this;
     }
 
@@ -85,7 +85,7 @@ public class AuditEntry {
                 .add("id", id)
                 .add("localDate", localDate)
                 .add("localDateTime", localDateTime)
-                .add("date", date)
+                .add("javaUtilDate", javaUtilDate)
                 .add("auditEntry", auditEntry)
                 .add("instant", instant)
                 .toString();
