@@ -54,9 +54,27 @@ timestamps was created on that date, and we were GMT-5, thus 9:12:24 local time 
 localDate apparently stored the time as midnight (matches the spring data mongo docs for this type).
 
 Types that are supported currently using springdata mongo are
-    localDate
-    localDateTime
-    Instant
+
+* localDate
+* localDateTime
+* Instant
+    
+Here is what that looks like in mongo after adding instant
+
+    {
+            "_id" : ObjectId("57bdf0fcfdab162d6845b83e"),
+            "_class" : "com.dood.java.dates.model.AuditEntry",
+            "localDate" : ISODate("2016-08-24T05:00:00Z"),
+            "localDateTime" : ISODate("2016-08-24T19:09:48.336Z"),
+            "date" : ISODate("2016-08-24T19:09:48.336Z"),
+            "auditEntry" : "This is an audit string for 2016-08-24T14:09:48.336",
+            "instant" : ISODate("2016-08-24T19:09:48.336Z"),
+            "duration" : {
+                    "seconds" : NumberLong(31020),
+                    "nanos" : 0
+            }
+    }
+    
 
 ### Dates vs LocalDateTimes and Mongo
 It looks like all the entries are stored in mongo as zulu IsoDate.  here is a document that contained a LocalDate, LocalDateTime
