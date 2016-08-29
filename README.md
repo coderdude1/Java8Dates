@@ -67,7 +67,7 @@ Here is what that looks like in mongo after adding instant
             "_class" : "com.dood.java.dates.model.AuditEntry",
             "localDate" : ISODate("2016-08-24T05:00:00Z"),
             "localDateTime" : ISODate("2016-08-24T19:09:48.336Z"),
-            "date" : ISODate("2016-08-24T19:09:48.336Z"),
+            "javaUtilDate" : ISODate("2016-08-24T19:09:48.336Z"),
             "auditEntry" : "This is an audit string for 2016-08-24T14:09:48.336",
             "instant" : ISODate("2016-08-24T19:09:48.336Z"),
             "duration" : {
@@ -86,7 +86,7 @@ and a java.util.Date object
             "_class" : "com.dood.java.dates.model.AuditEntry",
             "localDate" : ISODate("2016-08-18T05:00:00Z"),
             "localDateTime" : ISODate("2016-08-19T04:05:52.867Z"),
-            "date" : ISODate("2016-08-19T04:05:52.867Z"),
+            "javaUtilDate": ISODate("2016-08-19T04:05:52.867Z"),
             "auditEntry" : "count: 5"
     }
 
