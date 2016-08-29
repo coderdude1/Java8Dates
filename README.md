@@ -6,7 +6,8 @@ nice joda-time utility methods and classes and exercise them with tests
 
 ## General Notes
 This is a springboot class, using intellij you can just import from existing sources and should be
-able to run the main springboot application class.
+able to run the main springboot application class.  You can shoot a browser at http://localhost:8080
+and see a swagger interface to all current controllers, and there methods
 
 ## Stuff todo still
 1. add some real unit tests for controllers, services, and maybe some tests to exercise date functions.
@@ -66,7 +67,7 @@ Here is what that looks like in mongo after adding instant
             "_class" : "com.dood.java.dates.model.AuditEntry",
             "localDate" : ISODate("2016-08-24T05:00:00Z"),
             "localDateTime" : ISODate("2016-08-24T19:09:48.336Z"),
-            "date" : ISODate("2016-08-24T19:09:48.336Z"),
+            "javaUtilDate" : ISODate("2016-08-24T19:09:48.336Z"),
             "auditEntry" : "This is an audit string for 2016-08-24T14:09:48.336",
             "instant" : ISODate("2016-08-24T19:09:48.336Z"),
             "duration" : {
@@ -85,7 +86,7 @@ and a java.util.Date object
             "_class" : "com.dood.java.dates.model.AuditEntry",
             "localDate" : ISODate("2016-08-18T05:00:00Z"),
             "localDateTime" : ISODate("2016-08-19T04:05:52.867Z"),
-            "date" : ISODate("2016-08-19T04:05:52.867Z"),
+            "javaUtilDate": ISODate("2016-08-19T04:05:52.867Z"),
             "auditEntry" : "count: 5"
     }
 

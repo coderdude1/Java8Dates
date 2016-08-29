@@ -2,14 +2,12 @@ package com.dood.java.dates.service;
 
 import com.dood.java.dates.model.AuditEntry;
 import com.dood.java.dates.repository.AuditEntryRepository;
-import com.sun.istack.internal.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
-import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -75,7 +73,7 @@ public class AuditEntryService {
     private AuditEntry createAuditEntry(LocalDate localDate, LocalDateTime localDateTime, Date date, String auditEntry,
                                         Instant instant) {
         return new AuditEntry()
-                .setDate(date)
+                .setJavaUtilDate(date)
                 .setLocalDate(localDate)
                 .setLocalDateTime(localDateTime)
                 .setAuditEntry(auditEntry)
