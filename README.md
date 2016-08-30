@@ -16,7 +16,7 @@ and see a swagger interface to all current controllers, and there methods
 3. various maniuplations of dates using the new jodatime style stuff
 3. Can I configure jackson with annotations and enums?  I've seen some stuff
 4. Probably break up this README file
-2. Add embedded mongo for integration tests, maybe unit tests to verify timezone and GMT query behavior
+2. Add embedded mongo for integration tests, maybe unit tests to verify timezone and GMT query behavior  http://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-nosql.html 30.2.4 has a section on this
 
 ## New java8 date types
 You can look up the details behind Oracle releasing new date types for java elsewhere, but
