@@ -7,7 +7,7 @@ import springfox.documentation.annotations.ApiIgnore;
 /**
  * Simple controller to redirect root url requests to the swagger API
  */
-@Controller //Note if this is @RestController redirect will not work
+@Controller //Note if this is @RestController redirect will not work since RestController returns a javaobject not a html template reference
 @ApiIgnore //No need to have swagger document this
 public class RootController {
 
