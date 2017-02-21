@@ -182,7 +182,7 @@ This one is a partial clip of the output, as the ZonedDateTime has hundreds of f
         zonedDateTime: 1471399229.094
     }
 
-###Using the JacksonConfig along with the JSR310 lib to control the jackson engine.
+### Using the JacksonConfig along with the JSR310 lib to control the jackson engine.
 #### Using the WRITE_DATES_AS_TIMESTAMPS
 
 Value set to false
@@ -217,7 +217,7 @@ Value set to true
         zonedDateTime: 1471398814.639
     }
     
-####Using the WRITE_DATE_TIMESTAMPS_AS_NANOSECONDS.  
+#### Using the WRITE_DATE_TIMESTAMPS_AS_NANOSECONDS.  
 note this is the same output as if we did not use the JacksonCOnfig, but juust
 added the Jackson support for JSR310 lib to the classpath
 
