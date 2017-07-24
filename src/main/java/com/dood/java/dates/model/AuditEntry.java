@@ -25,6 +25,15 @@ public class AuditEntry {
     private Instant instant;
 //    private Duration duration;//not supported by springdata mongo
 
+
+    public void now() {
+        localDate = LocalDate.now();
+        localDateTime = LocalDateTime.now();
+        javaUtilDate = new Date();
+        auditEntry = "NOW";
+        instant = Instant.now();
+    }
+
     public String getId() {
         return id;
     }

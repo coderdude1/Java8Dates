@@ -264,3 +264,26 @@ the Jackson support for JSR310 lib to the classpath (ie note the nanonseconds fo
         ],
         zonedDateTime: 1471398574.732
     }
+
+Value set to true, using @JsonFormatter to define what the serailized string looks like.  Look in the Spock test
+
+```
+{
+	"localDate": null,
+	"localDateTime": "2017-07-24T10:52:19.659Z",
+	"zonedDateTime": "2017-07-24T15:52:19.650Z",
+	"utilDate": "2017-07-24T15:52:19.670Z"
+}
+```
+
+Value set to true, adding a default converter to get define the format without an annotation.  Look in the spock test
+```
+{
+	"id": null,
+	"localDate": "2017-07-24",
+	"localDateTime": "2017-07-24T11:13:34.803",
+	"javaUtilDate": "2017-07-24T16:13:34.803+0000",
+	"auditEntry": "NOW",
+	"instant": "2017-07-24T16:13:34.803Z"
+}
+```
