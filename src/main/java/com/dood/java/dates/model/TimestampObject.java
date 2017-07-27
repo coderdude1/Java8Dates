@@ -4,8 +4,10 @@ import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import org.springframework.data.annotation.Id;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 /**
@@ -18,10 +20,19 @@ public class TimestampObject {
     private LocalDate localDate;
     private LocalDateTime localDateTime;
     private ZonedDateTime zonedDateTime;
+    private Instant instant;
 
     public LocalDate getLocalDate() {
         return localDate;
     }
+
+    public void now() {
+        localDate = LocalDate.now();
+        localDateTime = LocalDateTime.now();
+        zonedDateTime = ZonedDateTime.now(ZoneId.of("UTC"));
+        instant = Instant.now();
+    }
+
 
     public TimestampObject setLocalDate(LocalDate localDate) {
         this.localDate = localDate;
