@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer
+import spock.lang.Ignore
 import spock.lang.Specification
 
 import java.time.Instant
@@ -23,7 +24,7 @@ class ObjectWithDateTimesWithJacksonFormatterPatternSpec extends Specification {
 
     def setup() {
         objectMapper = new ObjectMapper().registerModule(new JavaTimeModule())
-        objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, true)
+        objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
 
     }
 
@@ -47,6 +48,7 @@ class ObjectWithDateTimesWithJacksonFormatterPatternSpec extends Specification {
         jsonInString
     }
 
+//    @Ignore('need to figure out if Instant has a serializer')
     def 'use a default formatter so we do not have to use jsonFormatter annotations' () {
         given:
         ObjectMapper mapper = new ObjectMapper()
@@ -56,8 +58,8 @@ class ObjectWithDateTimesWithJacksonFormatterPatternSpec extends Specification {
         javaTimeModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(FORMATTER ))
 //        javaTimeModule.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer(DateTimeFormatter.ISO_DATE_TIME))
         javaTimeModule.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer(FORMATTER))
-        javaTimeModule.addSerializer(Instant.class, new LocalDateTimeSerializer(FORMATTER ))
-        javaTimeModule.addDeserializer(Instant.class, new LocalDateTimeDeserializer(FORMATTER))
+//        javaTimeModule.addSerializer(Instant.class, new LocalDateTimeSerializer(FORMATTER ))
+//        javaTimeModule.addDeserializer(Instant.class, new LocalDateTimeDeserializer(FORMATTER))
         mapper.registerModule(javaTimeModule)
         mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
         AuditEntry auditEntry = new AuditEntry()  //this class doesn't have the JsonFormatter annotations
@@ -69,6 +71,16 @@ class ObjectWithDateTimesWithJacksonFormatterPatternSpec extends Specification {
 
         then:
         jsonString
+    }
+
+    def 'some Instant experiments'() {
+
+
+        given:
+        Instant someInstantWithoutMillis = Instant.parse('1999-12-31T23:59:59.000Z')
+
+        expect:
+        println(objectMapper.writeValueAsString(someInstantWithoutMillis))
     }
 
 }
